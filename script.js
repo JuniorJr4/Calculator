@@ -25,6 +25,9 @@ equalsButton.addEventListener('click', equalsButtonClick);
 
 function equalsButtonClick() {
     calculateExpression(witchOperator);
+    operandInProgress = operand1;
+    operand1 = '';
+    operatorInProgress = false;
     console.log('operand1: ' + operand1,
     ' andIn: ' + operandInProgress,
     ' atorIn: ' + operatorInProgress,
@@ -171,6 +174,6 @@ function divide(x, y) {
 }
 
 function display(input) {
-    displayScreen.textContent = displayScreen.textContent + input;
+    displayScreen.textContent = input;
 }
 

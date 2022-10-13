@@ -1,3 +1,4 @@
+//default values
 let operand1 = '';
 let operandInProgress = '';
 let operatorInProgress = false;
@@ -7,6 +8,9 @@ const displayScreen = document.querySelector('.display');
 const allNumberButtons = document.querySelectorAll('.number');
 const allOperatorButtons = document.querySelectorAll('.operator');
 const clearButton = document.querySelector('.clear');
+const equalsButton = document.querySelector('.equals');
+
+
 
 allOperatorButtons.forEach(btn => {
     btn.addEventListener('click', operatorButtonClick);
@@ -16,21 +20,77 @@ allNumberButtons.forEach(btn => {
     btn.addEventListener('click', NumberButtonClick);
 });
 
-clearButton.addEventListener('click', clearAll)
+clearButton.addEventListener('click', clearAll);
+equalsButton.addEventListener('click', equalsButtonClick);
+
+function equalsButtonClick() {
+    calculateExpression(witchOperator);
+    console.log('operand1: ' + operand1,
+    ' andIn: ' + operandInProgress,
+    ' atorIn: ' + operatorInProgress,
+    ' witch: ' + witchOperator);
+}
+
+function resetValues() {
+    operand1 = '';
+    operandInProgress = '';
+    operatorInProgress = false;
+    witchOperator = '';
+}
 
 function calculateExpression(e) {
+    
     if (e === 'plus') {
+        if (operandInProgress === '') {
+            operandInProgress = 0;
+        } else if (operand1 === '') {
+            operand1 = 0;
+        }
+        operand1 = parseInt(operand1);
+        operandInProgress = parseInt(operandInProgress);
         operand1 = add(operand1, operandInProgress);
+        operandInProgress = '';
+        clearDisplay();
+        display(operand1);
 
     } else if (e === 'minus') {
-        operand1 = sub(operand1, operandInProgress)
-
+        if (operandInProgress === '') {
+            operandInProgress = 0;
+        } else if (operand1 === '') {
+            operand1 = 0;
+        }
+        operand1 = parseInt(operand1);
+        operandInProgress = parseInt(operandInProgress);
+        operand1 = sub(operand1, operandInProgress);
+        operandInProgress = '';
+        clearDisplay();
+        display(operand1);
     } else if (e === 'times') {
+        if (operandInProgress === '') {
+            operandInProgress = 1;
+        } else if (operand1 === '') {
+            operand1 = 1;
+        }
+        operand1 = parseInt(operand1);
+        operandInProgress = parseInt(operandInProgress);
         operand1 = mult(operand1, operandInProgress);
-
+        operandInProgress = '';
+        clearDisplay();
+        display(operand1);
     } else if (e === 'divided') {
-        operand1 = divide(operand1, operandInProgress)
+        if (operandInProgress === '') {
+            operandInProgress = 1;
+        } else if (operand1 === '') {
+            operand1 = 1;
+        }
+        operand1 = parseInt(operand1);
+        operandInProgress = parseInt(operandInProgress);
+        operand1 = divide(operand1, operandInProgress);
+        operandInProgress = '';
+        clearDisplay();
+        display(operand1);
     }
+    operatorInProgress = true;
 }
 
 function setOperator(newOperator) {
@@ -38,38 +98,52 @@ function setOperator(newOperator) {
 }
 
 function operatorButtonClick(e) {
-    if (witchOperator === e.target.value) {
-        return
-    }
     setOperator(e.target.value);
-    if (operandInProgress);  
-    operatorInProgress = true;
     if (operand1 === '') {
-        operand1 = parseInt(operandInProgress);
+        operand1 = operandInProgress;
         operandInProgress = '';
-    } else if (operand1 != '') {
-        operandInProgress = parseInt(operandInProgress);
-        calculateExpression(e.target.value);
-        operandInProgress = '';
-        clearDisplay();
-        display(operand1);
+        operatorInProgress = true;
+        console.log('operand1: ' + operand1,
+    ' andIn: ' + operandInProgress,
+    ' atorIn: ' + operatorInProgress,
+    ' witch: ' + witchOperator);
+        return;
+    } else {
+    calculateExpression(e.target.value);
     }
-    console.log(operandInProgress, operand1, operandInProgress);
-    operandInProgress = '';
-
+    // if (operatorInProgress && witchOperator === e.target.value) {
+    //     return;
+    // } else if (operatorInProgress && witchOperator != e.target.value) {
+    //     setOperator(e.target.value);
+    //     return;
+    // } else if (operand1 === '') {
+    //     operand1 = parseInt(operandInProgress);
+    //     operandInProgress = '';
+    // } else if (operand1 != '') {
+    //     operandInProgress = parseInt(operandInProgress);
+    //     calculateExpression(e.target.value);
+    // }
+    // setOperator(e.target.value);
+    // operatorInProgress = true;
+    console.log('operand1: ' + operand1,
+    ' andIn: ' + operandInProgress,
+    ' atorIn: ' + operatorInProgress,
+    ' witch: ' + witchOperator);
 }
+
 function NumberButtonClick(e) {
-    if (operatorInProgress === false) {
-        operandInProgress += e.target.value;
-        display(e.target.value);
-    } else if (operatorInProgress === true) {
-        clearDisplay();
-        operandInProgress += e.target.value;
-        display(operandInProgress);
+    if (operatorInProgress) {
         operatorInProgress = false;
+        clearDisplay();
     }
-
+    operandInProgress += e.target.value;
+    display(operandInProgress);
+    console.log('operand1: ' + operand1,
+    ' andIn: ' + operandInProgress,
+    ' atorIn: ' + operatorInProgress,
+    ' witch: ' + witchOperator);
 }
+
 
 function clearDisplay() {
     displayScreen.textContent = '';
@@ -77,6 +151,7 @@ function clearDisplay() {
 
 function clearAll() {
     displayScreen.textContent = '';
+    resetValues();
 }
 
 function add(x, y) {
@@ -97,6 +172,5 @@ function divide(x, y) {
 
 function display(input) {
     displayScreen.textContent = displayScreen.textContent + input;
-
 }
 

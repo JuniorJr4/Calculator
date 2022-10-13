@@ -2,7 +2,7 @@
 let operand1 = '';
 let operandInProgress = '';
 let operatorInProgress = false;
-let witchOperator = ''; //It's Halloween now!
+let witchOperator = ''; //It's Halloween!
 
 const displayScreen = document.querySelector('.display');
 const allNumberButtons = document.querySelectorAll('.number');
@@ -24,14 +24,17 @@ clearButton.addEventListener('click', clearAll);
 equalsButton.addEventListener('click', equalsButtonClick);
 
 function equalsButtonClick() {
+    if (witchOperator === '') {
+        return;
+    }
     calculateExpression(witchOperator);
     operandInProgress = operand1;
     operand1 = '';
     operatorInProgress = false;
     console.log('operand1: ' + operand1,
-    ' andIn: ' + operandInProgress,
-    ' atorIn: ' + operatorInProgress,
-    ' witch: ' + witchOperator);
+        ' andIn: ' + operandInProgress,
+        ' atorIn: ' + operatorInProgress,
+        ' witch: ' + witchOperator);
 }
 
 function resetValues() {
@@ -42,17 +45,17 @@ function resetValues() {
 }
 
 function calculateExpression(e) {
-    
     if (e === 'plus') {
         if (operandInProgress === '') {
             operandInProgress = 0;
         } else if (operand1 === '') {
             operand1 = 0;
         }
-        operand1 = parseInt(operand1);
-        operandInProgress = parseInt(operandInProgress);
+        operand1 = Number(operand1);
+        operandInProgress = Number(operandInProgress);
         operand1 = add(operand1, operandInProgress);
         operandInProgress = '';
+        console.log(typeof(operand1));
         clearDisplay();
         display(operand1);
 
@@ -62,8 +65,8 @@ function calculateExpression(e) {
         } else if (operand1 === '') {
             operand1 = 0;
         }
-        operand1 = parseInt(operand1);
-        operandInProgress = parseInt(operandInProgress);
+        operand1 = Number(operand1);
+        operandInProgress = Number(operandInProgress);
         operand1 = sub(operand1, operandInProgress);
         operandInProgress = '';
         clearDisplay();
@@ -74,8 +77,8 @@ function calculateExpression(e) {
         } else if (operand1 === '') {
             operand1 = 1;
         }
-        operand1 = parseInt(operand1);
-        operandInProgress = parseInt(operandInProgress);
+        operand1 = Number(operand1);
+        operandInProgress = Number(operandInProgress);
         operand1 = mult(operand1, operandInProgress);
         operandInProgress = '';
         clearDisplay();
@@ -86,8 +89,8 @@ function calculateExpression(e) {
         } else if (operand1 === '') {
             operand1 = 1;
         }
-        operand1 = parseInt(operand1);
-        operandInProgress = parseInt(operandInProgress);
+        operand1 = Number(operand1);
+        operandInProgress = Number(operandInProgress);
         operand1 = divide(operand1, operandInProgress);
         operandInProgress = '';
         clearDisplay();
@@ -107,12 +110,12 @@ function operatorButtonClick(e) {
         operandInProgress = '';
         operatorInProgress = true;
         console.log('operand1: ' + operand1,
-    ' andIn: ' + operandInProgress,
-    ' atorIn: ' + operatorInProgress,
-    ' witch: ' + witchOperator);
+            ' andIn: ' + operandInProgress,
+            ' atorIn: ' + operatorInProgress,
+            ' witch: ' + witchOperator);
         return;
     } else {
-    calculateExpression(e.target.value);
+        calculateExpression(e.target.value);
     }
     // if (operatorInProgress && witchOperator === e.target.value) {
     //     return;
@@ -120,21 +123,22 @@ function operatorButtonClick(e) {
     //     setOperator(e.target.value);
     //     return;
     // } else if (operand1 === '') {
-    //     operand1 = parseInt(operandInProgress);
+    //     operand1 = Number(operandInProgress);
     //     operandInProgress = '';
     // } else if (operand1 != '') {
-    //     operandInProgress = parseInt(operandInProgress);
+    //     operandInProgress = Number(operandInProgress);
     //     calculateExpression(e.target.value);
     // }
     // setOperator(e.target.value);
     // operatorInProgress = true;
     console.log('operand1: ' + operand1,
-    ' andIn: ' + operandInProgress,
-    ' atorIn: ' + operatorInProgress,
-    ' witch: ' + witchOperator);
+        ' andIn: ' + operandInProgress,
+        ' atorIn: ' + operatorInProgress,
+        ' witch: ' + witchOperator);
 }
 
 function NumberButtonClick(e) {
+    if (e.target.value === '.' && operandInProgress % 1 != 0) return;
     if (operatorInProgress) {
         operatorInProgress = false;
         clearDisplay();
@@ -142,9 +146,9 @@ function NumberButtonClick(e) {
     operandInProgress += e.target.value;
     display(operandInProgress);
     console.log('operand1: ' + operand1,
-    ' andIn: ' + operandInProgress,
-    ' atorIn: ' + operatorInProgress,
-    ' witch: ' + witchOperator);
+        ' andIn: ' + operandInProgress,
+        ' atorIn: ' + operatorInProgress,
+        ' witch: ' + witchOperator);
 }
 
 
@@ -176,4 +180,12 @@ function divide(x, y) {
 function display(input) {
     displayScreen.textContent = input;
 }
+
+Number.prototype.limitDecimals = function(n) {
+    const d = Math.pow(10, n);
+    return Math.round((this + Number.EPSILON) * d) / d;
+  }
+
+  console.log(1.2323435436464564646463.limitDecimals(3), 1.5%1);
+  console.log(Number('1.88888'));
 

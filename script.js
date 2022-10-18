@@ -54,8 +54,9 @@ function calculateExpression(e) {
         operand1 = Number(operand1);
         operandInProgress = Number(operandInProgress);
         operand1 = add(operand1, operandInProgress);
-        operandInProgress = '';
-        console.log(typeof(operand1));
+
+        
+        console.log(typeof (operand1));
         clearDisplay();
         display(operand1);
 
@@ -68,7 +69,7 @@ function calculateExpression(e) {
         operand1 = Number(operand1);
         operandInProgress = Number(operandInProgress);
         operand1 = sub(operand1, operandInProgress);
-        operandInProgress = '';
+        
         clearDisplay();
         display(operand1);
     } else if (e === 'times') {
@@ -80,7 +81,7 @@ function calculateExpression(e) {
         operand1 = Number(operand1);
         operandInProgress = Number(operandInProgress);
         operand1 = mult(operand1, operandInProgress);
-        operandInProgress = '';
+        
         clearDisplay();
         display(operand1);
     } else if (e === 'divided') {
@@ -92,7 +93,7 @@ function calculateExpression(e) {
         operand1 = Number(operand1);
         operandInProgress = Number(operandInProgress);
         operand1 = divide(operand1, operandInProgress);
-        operandInProgress = '';
+        
         clearDisplay();
         display(operand1);
     }
@@ -117,20 +118,6 @@ function operatorButtonClick(e) {
     } else {
         calculateExpression(e.target.value);
     }
-    // if (operatorInProgress && witchOperator === e.target.value) {
-    //     return;
-    // } else if (operatorInProgress && witchOperator != e.target.value) {
-    //     setOperator(e.target.value);
-    //     return;
-    // } else if (operand1 === '') {
-    //     operand1 = Number(operandInProgress);
-    //     operandInProgress = '';
-    // } else if (operand1 != '') {
-    //     operandInProgress = Number(operandInProgress);
-    //     calculateExpression(e.target.value);
-    // }
-    // setOperator(e.target.value);
-    // operatorInProgress = true;
     console.log('operand1: ' + operand1,
         ' andIn: ' + operandInProgress,
         ' atorIn: ' + operatorInProgress,
@@ -138,6 +125,7 @@ function operatorButtonClick(e) {
 }
 
 function NumberButtonClick(e) {
+    if (e.target.value.length >= 10) return;
     if (e.target.value === '.' && operandInProgress % 1 != 0) return;
     if (operatorInProgress) {
         operatorInProgress = false;
@@ -150,7 +138,6 @@ function NumberButtonClick(e) {
         ' atorIn: ' + operatorInProgress,
         ' witch: ' + witchOperator);
 }
-
 
 function clearDisplay() {
     displayScreen.textContent = '';
@@ -177,15 +164,27 @@ function divide(x, y) {
     return (x / y);
 }
 
-function display(input) {
-    displayScreen.textContent = input;
+function formatNumber(num) {
+    if (typeof (num) !== 'string') {
+        num = num.limitDecimals(4);
+        num = String(num);
+    }
+    return num;
 }
 
-Number.prototype.limitDecimals = function(n) {
+function display(input) {
+    formatNumber(input);
+    displayScreen.textContent = input;
+    //operandInProgress = input.substring(0,10);
+}
+
+Number.prototype.limitDecimals = function (n) {
     const d = Math.pow(10, n);
     return Math.round((this + Number.EPSILON) * d) / d;
-  }
+}
 
-  console.log(1.2323435436464564646463.limitDecimals(3), 1.5%1);
-  console.log(Number('1.88888'));
+console.log(1234444444444.678999.limitDecimals(2.4691358022219753e+21), 1.5 % 1);
+console.log(Number('1.88888'));
+console.log(Number.round)
+console.log(mult(1111111111, 2222222222222));
 

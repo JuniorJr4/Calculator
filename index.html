@@ -5,34 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/614d2f61fa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="display-container">
-        <div class="display"></div>
-    </div>
-    <div class="number-btns">
-        <button class="number" value="1">1</button>
-        <button class="number" value="2">2</button>
-        <button class="number" value="3">3</button>
-        <button class="number" value="4">4</button>
-        <button class="number" value="5">5</button>
-        <button class="number" value="6">6</button>
-        <button class="number" value="7">7</button>
-        <button class="number" value="8">8</button>
-        <button class="number" value="9">9</button>
-        <button class="number" value="0">0</button>
-        <button class="number" value=".">.</button>
-        <button class="clear">Clear</button>
-    </div>
-    <div class="operator-btns">
-        <button class="operator" value="plus">+</button>
-        <button class="operator" value="minus">-</button>
-        <button class="operator" value="times">*</button>
-        <button class="operator" value="divided">/</button>
-        <button class="equals" value="equals">=</button>
+    <div class="shell">
+        <div class="display-container">
+            <span class="back">
+                <div class="display no-sun"></div>
+                <div class="fake-panel"></div>
+            </span>
+        </div>
+        <h3 class="title">BOBBIE INSTRUMENTS CG-507</h3>
+        <div class="solar-container">
+            <div class="solar"><img class="solar-panel" src="images/solar-panel.jpg"></div>
+
+        </div>
+        <div class="sun-container">
+            <div class="sun"><i class="fa-regular fa-sun fa-4x"></i></div>
+            <h4 class="charge">Click sun and shine one panel to charge</h4>
+            <div class="top-btn">
+                <button class="plus-minus operator minus red" value="-">+/-</button>
+            </div>
+        </div>
+        <div class="all-btns">
+            <div class="number-btns">
+                <button class="number white" value="1">1</button>
+                <button class="number white" value="2">2</button>
+                <button class="number white" value="3">3</button>
+                <button class="number white" value="4">4</button>
+                <button class="number white" value="5">5</button>
+                <button class="number white" value="6">6</button>
+                <button class="number white" value="7">7</button>
+                <button class="number white" value="8">8</button>
+                <button class="number white" value="9">9</button>
+                <button class="number red" value=".">.</button>
+                <button class="number white" value="0">0</button>
+                <button class="clear number red">Clear</button>
+            </div>
+            <div class="operator-btns">
+                <button class="operator red" value="plus">+</button>
+                <button class="operator red" value="minus">-</button>
+                <button class="operator red" value="times">*</button>
+                <button class="operator red" value="divided">/</button>
+                <button class="equals red" value="equals">=</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

@@ -1,3 +1,218 @@
+* {}
+
+@font-face {
+    font-family: 'digFont';
+    src: url(fonts/DS-DIGI.TTF);
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.display-container {
+    display: flex;
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+}
+
+.back {
+    background-color: rgb(145, 135, 135);
+    height: 35px;
+    width: 200px;
+
+}
+
+.ready-to-charge:hover~.display {
+
+
+}
+
+
+
+.fake-panel {
+    position: fixed;
+    height: 35px;
+    width: 120px;
+    border: 1px dotted red;
+    transform: translate(-25px, 60px);
+    z-index: 1000;
+}
+
+.no-sun {
+    animation: fadeOut 8s forwards;
+
+
+    -webkit-animation: fadeOut 8s forwards;
+    -moz-animation: fadeOut 8s forwards;
+    -o-animation: fadeOut 8s forwards;
+    -ms-animation: fadeOut 8s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
 .display {
-    height: 20px;
+    text-align: right;
+    font-size: 35px;
+
+    background-color: rgb(145, 135, 135);
+    height: 35px;
+    width: 200px;
+    font-family: digFont;
+}
+
+.number-btns {
+    display: grid;
+    column-gap: 0;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    width: 206px;
+    justify-items: center;
+}
+
+.all-btns {
+    display: flex;
+
+    height: 192px;
+
+}
+
+.operator-btns {
+    display: grid;
+    width: 75px;
+    grid-template-columns: 1;
+    justify-items: center;
+    row-gap: 3px;
+    align-items: center;
+}
+
+.shell {
+    background-color: #065598;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 290px;
+    height: 500px;
+    align-items: stretch;
+    /*background-image: url('calcshell.jpg');*/
+}
+
+.number {
+    width: 55px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.operator {
+    width: 55px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.equals {
+    width: 50px;
+    height: 30px;
+}
+
+.solar-container {
+    display: flex;
+    height: 51px;
+}
+
+.title {
+    margin: 0;
+    height: 40px;
+}
+
+.sun-container {
+    height: 110px;
+    display: flex;
+}
+
+.sun {
+    display: flex;
+    width: 130px;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-btn {
+    display: flex;
+    width: 75px;
+    justify-content: center;
+    align-items: center;
+}
+
+.minus {
+    height: 70px;
+}
+
+.solar-panel {
+    position: relative;
+    top: 2px;
+    left: 18px;
+}
+
+.charge {
+    text-align: center;
+    width: 75px;
+}
+
+.white {
+    background-color: white;
+}
+
+.red {
+    background-color: red;
 }

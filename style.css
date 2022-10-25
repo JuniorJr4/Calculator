@@ -1,4 +1,4 @@
-* {}
+
 
 @font-face {
     font-family: 'digFont';
@@ -19,36 +19,77 @@ body {
 }
 
 .back {
+    border-radius: 5px;
+    border: 2px solid black;
     background-color: rgb(145, 135, 135);
-    height: 35px;
-    width: 200px;
-
+    height: 37px;
+    width: 202px;
 }
 
-.ready-to-charge:hover~.display {
-
-
+.sunny {
+    animation: fadeIn linear 2s forwards;
+    -webkit-animation: fadeIn linear 2s forwards;
+    -moz-animation: fadeIn 2s forwards;
+    -o-animation: fadeIn 2s forwards;
+    -ms-animation: fadeIn 2s forwards;
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
 
+    100% {
+        opacity: 1;
+    }
+}
 
-.fake-panel {
-    position: fixed;
-    height: 35px;
-    width: 120px;
-    border: 1px dotted red;
-    transform: translate(-25px, 60px);
-    z-index: 1000;
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .no-sun {
-    animation: fadeOut 8s forwards;
-
-
-    -webkit-animation: fadeOut 8s forwards;
-    -moz-animation: fadeOut 8s forwards;
-    -o-animation: fadeOut 8s forwards;
-    -ms-animation: fadeOut 8s forwards;
+    animation: fadeOut 30s forwards;
+    -webkit-animation: fadeOut 30s forwards;
+    -moz-animation: fadeOut 30s forwards;
+    -o-animation: fadeOut 30s forwards;
+    -ms-animation: fadeOut 30s forwards;
 }
 
 @keyframes fadeOut {
@@ -105,7 +146,7 @@ body {
 .display {
     text-align: right;
     font-size: 35px;
-
+    border-radius: 5px;
     background-color: rgb(145, 135, 135);
     height: 35px;
     width: 200px;
@@ -123,7 +164,6 @@ body {
 
 .all-btns {
     display: flex;
-
     height: 192px;
 
 }
@@ -137,6 +177,10 @@ body {
     align-items: center;
 }
 
+.plus-minus {
+    width: 55px;
+}
+
 .shell {
     background-color: #065598;
     display: flex;
@@ -145,13 +189,20 @@ body {
     width: 290px;
     height: 500px;
     align-items: stretch;
-    /*background-image: url('calcshell.jpg');*/
+    border: 2px solid black;
 }
 
 .number {
     width: 55px;
     height: 35px;
-    border-radius: 5px;
+    border-radius: 5px;  
+}
+
+button {
+    border: 2px solid black;
+    font-size: 15px;
+    display:inline-flex;
+    text-align: left;
 }
 
 .operator {
@@ -161,8 +212,9 @@ body {
 }
 
 .equals {
-    width: 50px;
-    height: 30px;
+    width: 55px;
+    height: 35px;
+    border-radius: 5px;
 }
 
 .solar-container {
@@ -196,6 +248,7 @@ body {
 
 .minus {
     height: 70px;
+    border-radius: 5px;
 }
 
 .solar-panel {
@@ -211,8 +264,25 @@ body {
 
 .white {
     background-color: white;
+    color: #065598;
+    font-weight: bold;
 }
 
 .red {
     background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+h3 {
+    padding-left: 30px;
+    color: white;
+}
+
+h4 {
+    color: white;
+}
+
+i {
+    color: white;
 }

@@ -7,6 +7,7 @@
 
 
 body {
+    background-color: #FF4C4C;
     display: flex;
     justify-content: center;
 }
@@ -26,12 +27,13 @@ body {
     width: 202px;
 }
 
+/* class to fade in display to simulate solar charging*/
 .sunny {
-    animation: fadeIn linear 2s forwards;
-    -webkit-animation: fadeIn linear 2s forwards;
-    -moz-animation: fadeIn 2s forwards;
-    -o-animation: fadeIn 2s forwards;
-    -ms-animation: fadeIn 2s forwards;
+    animation: fadeIn linear 1s forwards;
+    -webkit-animation: fadeIn linear 1s forwards;
+    -moz-animation: fadeIn 1s forwards;
+    -o-animation: fadeIn 1s forwards;
+    -ms-animation: fadeIn 1s forwards;
 }
 
 @keyframes fadeIn {
@@ -84,6 +86,7 @@ body {
     }
 }
 
+/* class to fade out display to simulate losing power */
 .no-sun {
     animation: fadeOut 30s forwards;
     -webkit-animation: fadeOut 30s forwards;
@@ -207,8 +210,9 @@ button {
 
 .operator {
     width: 55px;
-    height: 35px;
+    height: 30px;
     border-radius: 5px;
+    margin-bottom:-10px;
 }
 
 .equals {
@@ -220,15 +224,18 @@ button {
 .solar-container {
     display: flex;
     height: 51px;
+    align-items: center;
+    
 }
 
 .title {
+    font-family: 'Roboto';
     margin: 0;
     height: 40px;
 }
 
 .sun-container {
-    height: 110px;
+    height: 50px;
     display: flex;
 }
 
@@ -241,14 +248,18 @@ button {
 
 .top-btn {
     display: flex;
-    width: 75px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    height: 45px;
+    width: 88px;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .minus {
-    height: 70px;
+    height: 35px;
     border-radius: 5px;
+    width: 55px;
 }
 
 .solar-panel {
@@ -285,4 +296,37 @@ h4 {
 
 i {
     color: white;
+}
+
+.flashlight-container {
+    width: 192px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    align-items: flex-end;
+}
+
+.flashlight {
+    width: 124px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.border {
+    font-family: 'Roboto';
+    display: flex;
+    height: 40px;
+    border: 2px solid black;
+    width: 260px;
+    border-radius: 15px;
+    border: 3px solid black;
+    align-items: center;
+    justify-content: center;
 }
